@@ -1,4 +1,4 @@
-import { DesktopPage } from "./pages/DesktopPage/DesktopPage";
+import { DesktopPage } from "./pages";
 
 export const App = () => {
   return (

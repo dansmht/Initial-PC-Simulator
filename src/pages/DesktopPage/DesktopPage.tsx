@@ -1,10 +1,13 @@
-import React from 'react';
-import styles from './DesktopPage.module.scss';
+import React from "react";
+import { DesktopGrid, DesktopWallpaper } from "../../modules/Desktop";
+import styles from "./DesktopPage.module.scss";
 
 export const DesktopPage = () => {
   return (
     <div className={styles.DesktopPage}>
-      DesktopPage
+      <DesktopWallpaper>
+        <DesktopGrid/>
+      </DesktopWallpaper>
     </div>
   );
 };
