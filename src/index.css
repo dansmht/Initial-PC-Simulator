@@ -1,7 +1,18 @@
+/* Fonts */
+
+@font-face {
+  font-family: MainFont;
+  src: url('assets/fonts/MainFont.woff') format("truetype"),
+  url('assets/fonts/MainFont.woff2') format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
 /* Root */
 
 body {
   height: 100vh;
+  font-family: MainFont, sans-serif;
 }
 
 #root {

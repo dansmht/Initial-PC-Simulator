@@ -1,2 +1,2 @@
-export { DesktopWallpaper } from './components/DesktopWallpaper/DesktopWallpaper';
-export { DesktopGrid } from './components/DesktopGrid/DesktopGrid';
+export { DesktopWallpaper } from "./components/DesktopWallpaper/DesktopWallpaper";
+export { DesktopShortcuts } from "./components/DesktopShortcuts/DesktopShortcuts";
