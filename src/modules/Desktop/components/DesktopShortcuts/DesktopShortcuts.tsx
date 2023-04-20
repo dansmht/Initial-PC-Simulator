@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import classNames from "classnames";
+import { AppShortcut } from "../../../../components/AppShortcut/AppShortcut";
 import { useDesktopShortcutsStore } from "../../store/DesktopShortcutsStore";
 import { Nullable } from "../../../../types/utils";
 import styles from "./DesktopShortcuts.module.scss";
@@ -53,29 +53,13 @@ export const DesktopShortcuts = () => {
   return (
     <ul className={styles.DesktopShortcuts} ref={shortcutListRef}>
       {shortcuts.map((shortcut) => (
-        <li
-          key={shortcut.id}
-          className={classNames(styles.Shortcut, {
-            [styles.Selected]: shortcut.id === selectedAppId,
-          })}
-        >
-          <div
-            id={shortcut.id}
-            className={styles.Wrapper}
-            onClick={selectApp}
-            onContextMenu={openShortcutDropdown}
-            onDoubleClick={openApp}
-          >
-            <img
-              src={shortcut.icon}
-              alt="shortcut"
-              className={styles.Icon}
-            />
-            <h5 className={styles.Title}>
-              {shortcut.currentTitle || shortcut.baseTitle}
-            </h5>
-          </div>
-        </li>
+        <AppShortcut
+          shortcut={shortcut}
+          isSelected={shortcut.id === selectedAppId}
+          onClick={selectApp}
+          onContextMenu={openShortcutDropdown}
+          onDoubleClick={openApp}
+        />
       ))}
     </ul>
   );
