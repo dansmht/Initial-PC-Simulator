@@ -1,5 +1,5 @@
 export type Shortcut = {
-  id: number,
+  id: string,
   icon: string,
   baseTitle: string,
   currentTitle: string,
