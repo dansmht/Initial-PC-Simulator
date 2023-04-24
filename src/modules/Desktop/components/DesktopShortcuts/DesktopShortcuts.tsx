@@ -1,11 +1,12 @@
-import React, { useEffect, useRef, useState } from "react";
-import { ContextMenu } from "../../../../components/ContextMenu/ContextMenu";
+import React, { FC, useEffect, useRef, useState } from "react";
 import { AppShortcut } from "../../../../components/AppShortcut/AppShortcut";
+import { ContextMenu } from "../../../../components/ContextMenu/ContextMenu";
+import { ContextMenuItem } from "../../../../components/ContextMenuItem/ContextMenuItem";
 import { useDesktopShortcutsStore } from "../../store/DesktopShortcutsStore";
 import { Nullable } from "../../../../types/utils";
 import styles from "./DesktopShortcuts.module.scss";
 
-export const DesktopShortcuts = () => {
+export const DesktopShortcuts: FC = () => {
   const shortcuts = useDesktopShortcutsStore((state) => state.shortcuts);
 
   const shortcutListRef = useRef<HTMLUListElement>(null);
@@ -51,7 +52,11 @@ export const DesktopShortcuts = () => {
       {shortcuts.map((shortcut) => (
         <ContextMenu
           key={shortcut.id}
-          content={<div>Hey {shortcut.id}</div>}
+          content={(
+            <ul>
+              <ContextMenuItem title="Rename"/>
+            </ul>
+          )}
         >
           {({ref, openContextMenu}) => (
             <AppShortcut

@@ -1,0 +1,10 @@
+.ContextMenuItem {
+  min-width: 160px;
+  padding: 4px;
+  border-radius: 4px;
+  font-size: 14px;
+
+  &:hover {
+    background-color: #ffffff44;
+  }
+}
