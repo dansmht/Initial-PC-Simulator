@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import { ContextMenu } from "../../../../components/ContextMenu/ContextMenu";
 import { AppShortcut } from "../../../../components/AppShortcut/AppShortcut";
 import { useDesktopShortcutsStore } from "../../store/DesktopShortcutsStore";
 import { Nullable } from "../../../../types/utils";
@@ -13,11 +14,6 @@ export const DesktopShortcuts = () => {
 
   const selectApp: React.MouseEventHandler<HTMLDivElement> = (event) => {
     setSelectedAppId(event.currentTarget.id);
-  };
-
-  const openShortcutDropdown: React.MouseEventHandler<HTMLDivElement> = (event) => {
-    event.preventDefault();
-    console.log("Right Click");
   };
 
   const openApp: React.MouseEventHandler<HTMLDivElement> = (event) => {
@@ -53,13 +49,21 @@ export const DesktopShortcuts = () => {
   return (
     <ul className={styles.DesktopShortcuts} ref={shortcutListRef}>
       {shortcuts.map((shortcut) => (
-        <AppShortcut
-          shortcut={shortcut}
-          isSelected={shortcut.id === selectedAppId}
-          onClick={selectApp}
-          onContextMenu={openShortcutDropdown}
-          onDoubleClick={openApp}
-        />
+        <ContextMenu
+          key={shortcut.id}
+          content={<div>Hey {shortcut.id}</div>}
+        >
+          {({ref, openContextMenu}) => (
+            <AppShortcut
+              ref={ref}
+              shortcut={shortcut}
+              isSelected={shortcut.id === selectedAppId}
+              onClick={selectApp}
+              onContextMenu={openContextMenu}
+              onDoubleClick={openApp}
+            />
+          )}
+        </ContextMenu>
       ))}
     </ul>
   );

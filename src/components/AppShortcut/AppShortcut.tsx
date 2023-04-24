@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React from "react";
 import classNames from "classnames";
 import { Shortcut } from "./_types";
 import styles from "./AppShortcut.module.scss";
@@ -11,13 +11,13 @@ type Props = {
   onDoubleClick?: React.MouseEventHandler<HTMLDivElement>,
 }
 
-export const AppShortcut: FC<Props> = ({
+export const AppShortcut = React.forwardRef<HTMLDivElement, Props>(({
   shortcut,
   isSelected,
   onClick,
   onContextMenu,
   onDoubleClick,
-}) => {
+}, ref) => {
   return (
     <li
       key={shortcut.id}
@@ -26,6 +26,7 @@ export const AppShortcut: FC<Props> = ({
       })}
     >
       <div
+        ref={ref}
         id={shortcut.id}
         className={styles.Wrapper}
         onClick={onClick}
@@ -43,4 +44,4 @@ export const AppShortcut: FC<Props> = ({
       </div>
     </li>
   );
-};
+});
