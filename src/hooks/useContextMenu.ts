@@ -24,7 +24,13 @@ export const useContextMenu = (childRef: React.RefObject<HTMLElement>, contentRe
 
   useEffect(() => {
     const onContextMenuHandler = (event: MouseEvent) => {
-      if (!childRef.current?.contains(event.target as Node)) {
+      const target = event.target as Node;
+
+      if (contentRef.current?.contains(target)) {
+        return;
+      }
+
+      if (!childRef.current?.contains(target)) {
         setIsOpen(false);
       }
     };
