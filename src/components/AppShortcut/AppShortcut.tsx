@@ -37,6 +37,7 @@ export const AppShortcut = React.forwardRef<HTMLDivElement, Props>(({
           src={shortcut.icon}
           alt="shortcut"
           className={styles.Icon}
+          draggable={false}
         />
         <h5 className={styles.Title}>
           {shortcut.currentTitle || shortcut.baseTitle}
