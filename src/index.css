@@ -13,6 +13,7 @@
 body {
   height: 100vh;
   font-family: MainFont, sans-serif;
+  color: #ffffff;
   cursor: default;
   user-select: none;
 }
