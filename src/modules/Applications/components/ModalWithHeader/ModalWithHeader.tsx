@@ -24,6 +24,10 @@ export const ModalWithHeader: FC<Props> = ({
   // style,
   isOpen,
   isMaximized,
+  onMinimize,
+  onMaximize,
+  onRestore,
+  onClose,
   children,
 }) => {
 
@@ -34,11 +38,10 @@ export const ModalWithHeader: FC<Props> = ({
       };
     }
     return {
-      top: "300px",
-      left: "300px",
-      bottom: "300px",
-      right: "300px",
-      border: "1px solid #ffffff22",
+      top: "200px",
+      left: "20%",
+      bottom: "200px",
+      right: "20%",
     };
   }, [isMaximized]);
 
@@ -53,18 +56,21 @@ export const ModalWithHeader: FC<Props> = ({
           <button
             className={styles.Button}
             title="Minimize"
+            onClick={onMinimize}
           >
             <SvgIcon.Minimize/>
           </button>
           <button
             className={styles.Button}
             title={isMaximized ? "Restore" : "Maximize"}
+            onClick={isMaximized ? onRestore : onMaximize}
           >
             {isMaximized ? <SvgIcon.Restore/> : <SvgIcon.Maximize/>}
           </button>
           <button
             className={`${styles.Button} ${styles.Close}`}
             title="Close"
+            onClick={onClose}
           >
             <SvgIcon.Close/>
           </button>

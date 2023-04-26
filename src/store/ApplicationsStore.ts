@@ -34,7 +34,7 @@ export const useApplicationsStore = create<ApplicationsState>()(persist(devtools
 
       if (!app) return;
 
-      app.isOpen = true;
+      app.isOpen = false;
       app.isMinimized = false;
     });
   },

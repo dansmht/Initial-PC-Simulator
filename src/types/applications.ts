@@ -1,3 +1,5 @@
+import { ReactNode } from "react";
+
 export type ApplicationsType = ApplicationState[];
 
 export type ApplicationState = {
@@ -6,4 +8,5 @@ export type ApplicationState = {
   isOpen: boolean,
   isMaximized: boolean,
   isMinimized: boolean,
+  children: ReactNode,
 }

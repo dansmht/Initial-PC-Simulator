@@ -3,23 +3,29 @@ import { AppShortcut } from "../../../../components/AppShortcut/AppShortcut";
 import { ContextMenu } from "../../../../components/ContextMenu/ContextMenu";
 import { ContextMenuItem } from "../../../../components/ContextMenuItem/ContextMenuItem";
 import { useDesktopShortcutsStore } from "../../../../store/DesktopShortcutsStore";
+import { useApplicationsStore } from "../../../../store/ApplicationsStore";
 import { Nullable } from "../../../../types/utils";
 import styles from "./DesktopShortcuts.module.scss";
 
 export const DesktopShortcuts: FC = () => {
   const shortcuts = useDesktopShortcutsStore((state) => state.shortcuts);
+  const openApp = useApplicationsStore((state) => state.openApp);
 
   const shortcutListRef = useRef<HTMLUListElement>(null);
 
   const [selectedAppId, setSelectedAppId] = useState<Nullable<string>>(null);
 
-  const selectApp: React.MouseEventHandler<HTMLDivElement> = (event) => {
+  const openAppById = (id: string) => {
+    openApp(id);
+    setSelectedAppId(null);
+  };
+
+  const onSelectApp: React.MouseEventHandler<HTMLDivElement> = (event) => {
     setSelectedAppId(event.currentTarget.id);
   };
 
-  const openApp: React.MouseEventHandler<HTMLDivElement> = (event) => {
-    console.log("OPEN APP");
-    setSelectedAppId(null);
+  const onOpenApp: React.MouseEventHandler<HTMLDivElement> = (event) => {
+    openAppById(event.currentTarget.id);
   };
 
   useEffect(() => {
@@ -34,7 +40,7 @@ export const DesktopShortcuts: FC = () => {
 
     const openAppOnEnterHandler = (event: KeyboardEvent) => {
       if (event.key === "Enter" && selectedAppId) {
-        console.log("OPEN APP");
+        openAppById(selectedAppId);
       }
     };
 
@@ -63,9 +69,9 @@ export const DesktopShortcuts: FC = () => {
               ref={ref}
               shortcut={shortcut}
               isSelected={shortcut.id === selectedAppId}
-              onClick={selectApp}
+              onClick={onSelectApp}
               onContextMenu={openContextMenu}
-              onDoubleClick={openApp}
+              onDoubleClick={onOpenApp}
             />
           )}
         </ContextMenu>
