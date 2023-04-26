@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import { immer } from "zustand/middleware/immer";
 import { devtools, persist } from "zustand/middleware";
-import { wallpapers } from "../../../assets/images/wallpapers";
+import { wallpapers } from "../assets/images/wallpapers";
 
 type WallpaperState = {
   activeWallpaper: number,

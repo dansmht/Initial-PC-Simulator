@@ -1,4 +1,3 @@
-import React from "react";
 import { DesktopShortcuts, DesktopWallpaper } from "../../modules/Desktop";
 import styles from "./DesktopPage.module.scss";
 

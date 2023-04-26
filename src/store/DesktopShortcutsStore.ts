@@ -1,8 +1,8 @@
 import { create } from "zustand";
 import { immer } from "zustand/middleware/immer";
 import { devtools, persist } from "zustand/middleware";
-import { Shortcut } from "../../../components/AppShortcut/_types";
-import { initialDesktopShortcuts } from "../_const";
+import { initialDesktopShortcuts } from "../consts/shortcuts";
+import { Shortcut } from "../components/AppShortcut/_types";
 
 type DesktopShortcutsStore = {
   shortcuts: Shortcut[],

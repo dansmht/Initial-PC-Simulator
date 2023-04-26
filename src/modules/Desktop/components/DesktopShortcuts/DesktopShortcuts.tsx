@@ -2,7 +2,7 @@ import React, { FC, useEffect, useRef, useState } from "react";
 import { AppShortcut } from "../../../../components/AppShortcut/AppShortcut";
 import { ContextMenu } from "../../../../components/ContextMenu/ContextMenu";
 import { ContextMenuItem } from "../../../../components/ContextMenuItem/ContextMenuItem";
-import { useDesktopShortcutsStore } from "../../store/DesktopShortcutsStore";
+import { useDesktopShortcutsStore } from "../../../../store/DesktopShortcutsStore";
 import { Nullable } from "../../../../types/utils";
 import styles from "./DesktopShortcuts.module.scss";
 

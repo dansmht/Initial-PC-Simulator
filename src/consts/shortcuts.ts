@@ -1,5 +1,5 @@
-import { Shortcut } from "../../components/AppShortcut/_types";
-import Icons from "../../assets/images/icons";
+import { Shortcut } from "../components/AppShortcut/_types";
+import { Icons } from "../assets/images/icons";
 
 export const initialDesktopShortcuts: Shortcut[] = [
   {
