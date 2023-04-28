@@ -62,15 +62,11 @@ export const ModalWithHeader: FC<Props> = ({
     } as React.CSSProperties;
   }, [isMinimized, isMaximized]);
 
-  const finalModalStyles: React.CSSProperties = useMemo(() => {
-    return Object.assign({}, modalStyles, {zIndex});
-  }, [modalStyles, zIndex]);
-
   // TODO onResize
   // const onResize = () => {}
 
   return (
-    <Modal isOpen={isOpen} style={finalModalStyles}>
+    <Modal isOpen={isOpen} style={modalStyles}>
       <div className={styles.ModalWithHeader} style={{backgroundColor: color}}>
         <div className={styles.TitleWrapper}>
           <img className={styles.Icon} src={icon} alt="logo" draggable={false}/>
