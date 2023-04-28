@@ -6,6 +6,7 @@ import { applications } from "../consts/applications";
 
 type ApplicationsState = {
   applications: ApplicationsType,
+  activeAppIds: string[],
   openApp: (id: string) => void,
   closeApp: (id: string) => void,
   minimizeApp: (id: string) => void,
@@ -15,11 +16,15 @@ type ApplicationsState = {
 
 export const useApplicationsStore = create<ApplicationsState>()(persist(devtools(immer((set) => ({
   applications,
+  activeAppIds: [],
   openApp: (id) => {
     set((state) => {
       const app = state.applications.find((application) => application.id === id);
 
       if (!app) return;
+
+      state.activeAppIds = state.activeAppIds.filter((appId) => appId !== id);
+      state.activeAppIds.push(id);
 
       if (!app.isOpen) {
         app.isOpen = true;
@@ -33,6 +38,8 @@ export const useApplicationsStore = create<ApplicationsState>()(persist(devtools
       const app = state.applications.find((application) => application.id === id);
 
       if (!app) return;
+
+      state.activeAppIds = state.activeAppIds.filter((appId) => appId !== id);
 
       app.isOpen = false;
       app.isMinimized = false;
@@ -53,6 +60,9 @@ export const useApplicationsStore = create<ApplicationsState>()(persist(devtools
 
       if (!app) return;
 
+      state.activeAppIds = state.activeAppIds.filter((appId) => appId !== id);
+      state.activeAppIds.push(id);
+
       app.isMaximized = true;
     });
   },
@@ -61,6 +71,9 @@ export const useApplicationsStore = create<ApplicationsState>()(persist(devtools
       const app = state.applications.find((application) => application.id === id);
 
       if (!app) return;
+
+      state.activeAppIds = state.activeAppIds.filter((appId) => appId !== id);
+      state.activeAppIds.push(id);
 
       app.isMaximized = false;
     });

@@ -4,8 +4,19 @@
   justify-content: space-between;
   align-items: center;
 
-  .Title {
-    font-size: 16px;
+  .TitleWrapper {
+    display: flex;
+    align-items: center;
+    column-gap: 8px;
+    margin-left: 8px;
+
+    .Icon {
+      width: 20px;
+    }
+
+    .Title {
+      font-size: 16px;
+    }
   }
 
   .ActionButtonsWrapper {

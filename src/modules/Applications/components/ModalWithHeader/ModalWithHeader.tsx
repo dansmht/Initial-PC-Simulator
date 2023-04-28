@@ -8,21 +8,24 @@ import styles from "./ModalWithHeader.module.scss";
 
 type Props = {
   title: string,
-  icon?: string,
+  icon: string,
   color?: Color,
+  zIndex: number,
   onMinimize?: () => void,
   onRestore?: () => void,
   onMaximize?: () => void,
   onClose?: () => void,
-} & Pick<ApplicationState, "isMaximized">
+} & Pick<ApplicationState, "isMinimized" | "isMaximized">
   & Omit<ModalProps, "style">;
 
 export const ModalWithHeader: FC<Props> = ({
   title,
   icon,
   color,
+  zIndex,
   // style,
   isOpen,
+  isMinimized,
   isMaximized,
   onMinimize,
   onMaximize,
@@ -31,27 +34,49 @@ export const ModalWithHeader: FC<Props> = ({
   children,
 }) => {
 
-  const modalStyles: React.CSSProperties | undefined = useMemo(() => {
+  const modalStyles: React.CSSProperties = useMemo(() => {
+    if (isMinimized) {
+      return {
+        top: "80%",
+        bottom: "0",
+        left: "20%",
+        right: "20%",
+        transform: "scale(0)",
+        transformOrigin: "bottom",
+        zIndex,
+      } as React.CSSProperties;
+    }
     if (isMaximized) {
       return {
         inset: "0",
-      };
+        zIndex,
+      } as React.CSSProperties;
     }
+    // TODO add positions
     return {
       top: "200px",
       left: "20%",
       bottom: "200px",
       right: "20%",
-    };
-  }, [isMaximized]);
+      zIndex,
+    } as React.CSSProperties;
+  }, [isMinimized, isMaximized]);
+
+  const finalModalStyles: React.CSSProperties = useMemo(() => {
+    return Object.assign({}, modalStyles, {zIndex});
+  }, [modalStyles, zIndex]);
 
   // TODO onResize
   // const onResize = () => {}
 
   return (
-    <Modal isOpen={isOpen} style={modalStyles}>
+    <Modal isOpen={isOpen} style={finalModalStyles}>
       <div className={styles.ModalWithHeader} style={{backgroundColor: color}}>
-        <div className={styles.Title}>{title}</div>
+        <div className={styles.TitleWrapper}>
+          <img className={styles.Icon} src={icon} alt="logo" draggable={false}/>
+          <div className={styles.Title}>{title}</div>
+        </div>
+
         <div className={styles.ActionButtonsWrapper}>
           <button
             className={styles.Button}
