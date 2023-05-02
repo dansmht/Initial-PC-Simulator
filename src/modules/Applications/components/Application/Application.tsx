@@ -4,10 +4,7 @@ import { HasChildren } from "../../../../types/utils";
 import { ApplicationState } from "../../../../types/applications";
 import { useApplicationsStore } from "../../../../store/ApplicationsStore";
 
-type Props = {
-  icon: string,
-} & ApplicationState
-  & HasChildren;
+type Props = ApplicationState & HasChildren;
 
 export const Application: FC<Props> = ({
   id,
