@@ -1,0 +1,37 @@
+.Tabs {
+  .List {
+    display: flex;
+    row-gap: 8px;
+    column-gap: 8px;
+
+    .Title {
+      padding: 4px 8px;
+      border-radius: 4px;
+
+      &.Active, &:hover {
+        background-color: #ffffff44;
+      }
+
+      &.Active:active {
+        background-color: #ffffff44;
+      }
+
+      &:active {
+        color: #ffffffcc;
+        background-color: #ffffff22;
+      }
+    }
+  }
+
+  .Content {
+
+  }
+
+  &.Vertical {
+    display: flex;
+
+    .List {
+      flex-direction: column;
+    }
+  }
+}
