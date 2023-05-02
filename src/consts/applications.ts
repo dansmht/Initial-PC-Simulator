@@ -8,5 +8,4 @@ export const applications: ApplicationsType = initialDesktopShortcuts.map(({id, 
   isOpen: false,
   isMinimized: false,
   isMaximized: false,
-  children: `App ${id} | ${baseTitle}`,
 }));
