@@ -1,16 +1,20 @@
-import React, { FC, useEffect, useMemo } from "react";
+import { FC, useEffect, useMemo } from "react";
 import { ModalWithHeader } from "../ModalWithHeader/ModalWithHeader";
 import { HasChildren } from "../../../../types/utils";
 import { ApplicationState } from "../../../../types/applications";
 import { useApplicationsStore } from "../../../../store/ApplicationsStore";
 
-type Props = ApplicationState & HasChildren;
+type Props = {
+  className?: string,
+} & ApplicationState
+  & HasChildren;
 
 export const Application: FC<Props> = ({
   id,
   name,
   icon,
   isOpen,
+  className,
   isMinimized,
   isMaximized,
   children,
@@ -54,6 +58,7 @@ export const Application: FC<Props> = ({
       title={name}
       icon={icon}
       zIndex={zIndex}
+      className={className}
       isMinimized={isMinimized}
       isMaximized={isMaximized}
       onMinimize={onMinimize}

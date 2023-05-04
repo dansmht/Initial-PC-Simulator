@@ -1,4 +1,4 @@
-.ModalWithHeader {
+.ModalHeader {
   height: 40px;
   display: flex;
   justify-content: space-between;
@@ -45,4 +45,8 @@
       }
     }
   }
+}
+
+.ContentWrapper {
+  height: calc(100% - 40px);
 }

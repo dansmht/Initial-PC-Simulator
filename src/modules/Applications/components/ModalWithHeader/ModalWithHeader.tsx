@@ -23,8 +23,8 @@ export const ModalWithHeader: FC<Props> = ({
   icon,
   color,
   zIndex,
-  // style,
   isOpen,
+  className,
   isMinimized,
   isMaximized,
   onMinimize,
@@ -58,6 +58,7 @@ export const ModalWithHeader: FC<Props> = ({
       left: "20%",
       bottom: "200px",
       right: "20%",
+      borderRadius: "8px",
       zIndex,
     } as React.CSSProperties;
   }, [isMinimized, isMaximized]);
@@ -66,8 +67,12 @@ export const ModalWithHeader: FC<Props> = ({
   // const onResize = () => {}
 
   return (
-    <Modal isOpen={isOpen} style={modalStyles}>
-      <div className={styles.ModalWithHeader} style={{backgroundColor: color}}>
+    <Modal
+      isOpen={isOpen}
+      className={className}
+      style={modalStyles}
+    >
+      <div className={styles.ModalHeader} style={{backgroundColor: color}}>
         <div className={styles.TitleWrapper}>
           <img className={styles.Icon} src={icon} alt="logo" draggable={false}/>
           <div className={styles.Title}>{title}</div>
@@ -81,6 +86,7 @@ export const ModalWithHeader: FC<Props> = ({
           >
             <SvgIcon.Minimize/>
           </button>
+
           <button
             className={styles.Button}
             title={isMaximized ? "Restore" : "Maximize"}
@@ -88,6 +94,7 @@ export const ModalWithHeader: FC<Props> = ({
           >
             {isMaximized ? <SvgIcon.Restore/> : <SvgIcon.Maximize/>}
           </button>
+
           <button
             className={`${styles.Button} ${styles.Close}`}
             title="Close"
@@ -98,7 +105,9 @@ export const ModalWithHeader: FC<Props> = ({
         </div>
       </div>
 
-      {children}
+      <div className={styles.ContentWrapper}>
+        {children}
+      </div>
     </Modal>
   );
 };
