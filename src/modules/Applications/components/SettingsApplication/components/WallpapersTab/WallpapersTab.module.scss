@@ -1,0 +1,19 @@
+.WallpapersTab {
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  overflow-y: auto;
+
+  .Wallpaper {
+    border: 2px solid transparent;
+
+    &.Active {
+      border: 2px solid #ffff00;
+    }
+
+    > img {
+      width: 280px;
+    }
+  }
+}
