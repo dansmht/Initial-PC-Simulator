@@ -14,7 +14,7 @@ export const Applications = () => {
               App {app.id} {app.name}
             </Application>
           )}
-          {app.id === "2" && <SettingsApplication {...app}/>}
+          {app.id === "2" && <SettingsApplication key={app.id} {...app}/>}
         </>
       ))}
     </>
