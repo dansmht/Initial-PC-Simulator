@@ -6,10 +6,16 @@ import { HasChildren } from "../../../../types/utils";
 import styles from "./Tabs.module.scss";
 
 type Props = {
+  className?: string,
+  listClassName?: string,
+  contentClassName?: string,
   vertical?: boolean,
 } & HasChildren;
 
 export const Tabs: FC<Props> = ({
+  className,
+  listClassName,
+  contentClassName,
   vertical,
   children,
 }) => {
@@ -47,11 +53,11 @@ export const Tabs: FC<Props> = ({
   };
 
   return (
-    <div className={classNames(styles.Tabs, {[styles.Vertical]: vertical})}>
-      <div className={styles.List}>
+    <div className={classNames(styles.Tabs, {[styles.Vertical]: vertical}, className)}>
+      <div className={classNames(styles.List, listClassName)}>
         {renderTabList()}
       </div>
-      <div className={styles.Content}>
+      <div className={classNames(styles.Content, contentClassName)}>
         {renderTabContent()}
       </div>
     </div>
