@@ -41,7 +41,7 @@ export const Tabs: FC<Props> = ({
           className={classNames(styles.Title, {[styles.Active]: activeTab === index})}
           onClick={() => onChangeActiveTab(index)}
         >
-          {icon && <img src={icon} alt="icon"/>}
+          {icon && <img src={icon} alt="icon" draggable={false}/>}
           {label}
         </div>
       );
