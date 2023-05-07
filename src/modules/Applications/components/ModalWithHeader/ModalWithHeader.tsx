@@ -61,7 +61,7 @@ export const ModalWithHeader: FC<Props> = ({
       borderRadius: "8px",
       zIndex,
     } as React.CSSProperties;
-  }, [isMinimized, isMaximized]);
+  }, [isMinimized, isMaximized, zIndex]);
 
   // TODO onResize
   // const onResize = () => {}
